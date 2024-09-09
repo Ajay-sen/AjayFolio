@@ -31,7 +31,7 @@ import healthcare from "./healthcare.png";
 import wanderlust from "./wanderlust.png";
 import chatapp from "./chatapp.png";
 
-// import diljit from "./diljit.mp3";
+
 
 export {
   logo,
@@ -63,5 +63,5 @@ export {
   healthcare,
   chatapp,
   livelink,
-  // diljit,
+  
 };
