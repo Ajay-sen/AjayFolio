@@ -21,6 +21,7 @@
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
     "three": "^0.168.0",
+    "three-stdlib": "^2.32.2",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
