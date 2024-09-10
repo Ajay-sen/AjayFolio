@@ -15,8 +15,8 @@ lerna-debug.log*
 node_modules
 
 # Production build
-dist
-dist-ssr
+# Temporarily untrack dist for deployment purposes, or adjust as needed
+# dist/
 
 # Editor directories and files
 .vscode/*
