@@ -1,15 +1,13 @@
-import { useRef,useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Typed from "typed.js";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import myPicture from '../assets/foliodp3.jpg';
 
-
-
-
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const typed = new Typed('.multiple-text', {
       strings: ['Software Developer', 'Web Developer', 'Programmer'],
@@ -19,18 +17,31 @@ const Hero = () => {
       loop: true,
     });
 
-    // Cleanup on component unmount
     return () => {
       typed.destroy();
     };
   }, []);
 
-  
+  useEffect(() => {
+    // Check if the screen size is mobile
+    const mediaQuery = window.matchMedia("(max-width: 760px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
@@ -44,21 +55,19 @@ const Hero = () => {
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             Specialist in <span className="multiple-text"></span>
           </p>
-        
-         
 
-        <div className='ml-5 mt-5 hero-img'>
-          <img
-            src={myPicture}
-            alt="Ajay Sen"
-            className='w-[200px] h-[200px] rounded-full object-cover'
-          />
-        </div>
-       
+          <div className='ml-5 mt-5 hero-img'>
+            <img
+              src={myPicture}
+              alt="Ajay Sen"
+              className='w-[200px] h-[200px] rounded-full object-cover'
+            />
+          </div>
         </div>
       </div>
 
-      <ComputersCanvas />
+      {/* Render ComputersCanvas only when it's not mobile */}
+      {!isMobile && <ComputersCanvas />}
 
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
         <a href='#about'>
