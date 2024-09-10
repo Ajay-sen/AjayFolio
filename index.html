@@ -2,27 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/logo.png" />
+    <link rel="icon"  href="/logo.png" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css"/>
+
+    <!-- <script src="./snowfall.min.js"></script> -->
+    <script src="./snowfall.min.js"></script>
     <title>Ajay | Portfolio</title>
   </head>
   <body>
+    <div className="snowfalls">
     <div id="root"></div>
-    <script src="./snowfall.min.js"></script> <!-- Ensure this path is correct -->
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        if (typeof snowFall !== 'undefined') {
-          snowFall.snow(document.querySelector("#root"), {
-            round: true,
-            minSize: 1,
-            maxSize: 6,
-          });
-        } else {
-          console.error('snowFall is not defined');
-        }
-      });
-    </script>
+  </div>
   </body>
+
+  <script>
+    snowFall.snow(document.querySelector(".snowfalls"),{
+      round:true,
+      minSize:1,
+      maxSize:6,
+    })
+  </script>
 </html>
