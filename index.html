@@ -1,32 +1,28 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/logo.png" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./index.css"/>
-  
-  <!-- Ensure the correct path to snowfall.min.js -->
-  <script src="./snowfall.min.js"></script>
-  <title>Ajay | Portfolio</title>
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-  
-  <script>
-    window.onload = function() {
-      if (typeof snowFall !== "undefined") {
-        snowFall.snow(document.getElementById("#root"), {
-          round: true,
-          minSize: 1,
-          maxSize: 6,
-        });
-      } else {
-        console.error("snowFall is not defined. Ensure snowfall.min.js is loaded correctly.");
-      }
-    };
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css"/>
+    <title>Ajay | Portfolio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./snowfall.min.js"></script> <!-- Ensure this path is correct -->
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        if (typeof snowFall !== 'undefined') {
+          snowFall.snow(document.querySelector("#root"), {
+            round: true,
+            minSize: 1,
+            maxSize: 6,
+          });
+        } else {
+          console.error('snowFall is not defined');
+        }
+      });
+    </script>
+  </body>
 </html>
